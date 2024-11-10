@@ -1,0 +1,203 @@
+/* Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+}
+
+/* Container styling */
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background: linear-gradient(135deg, #1f3b4d, #3f5a6a);
+    color: #ffffff;
+    padding: 10px;
+}
+
+.container {
+    width: 100%;
+    max-width: 600px;
+    background-color: #ffffff;
+    border-radius: 15px;
+    box-shadow: 0px 8px 20px rgba(0, 0, 0, 0.2);
+    padding: 20px;
+    color: #2b3e50;
+    margin: 20px;
+    animation: fadeIn 1s ease-out;
+}
+
+.heading {
+    text-align: center;
+    font-size: 1.6rem;
+    color: #1f3b4d;
+    font-weight: bold;
+    margin-bottom: 20px;
+    text-transform: uppercase;
+}
+
+/* Form styling */
+.form-group {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 15px;
+}
+
+label {
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: #3f5a6a;
+    margin-bottom: 8px;
+}
+
+input[type="text"],
+input[type="number"],
+select {
+    padding: 10px;
+    font-size: 1rem;
+    border: 2px solid #e0e6ed;
+    border-radius: 5px;
+    transition: border-color 0.3s ease;
+}
+
+input[type="text"]:focus,
+input[type="number"]:focus,
+select:focus {
+    border-color: #1f3b4d;
+    outline: none;
+}
+
+button {
+    padding: 12px;
+    font-size: 1rem;
+    font-weight: bold;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background 0.3s ease, transform 0.2s ease;
+    margin-top: 10px;
+}
+
+#addToCart {
+    background: #1f3b4d;
+    color: #ffffff;
+}
+
+#addToCart:hover {
+    background: #3f5a6a;
+    transform: scale(1.05);
+}
+
+#generatePDF, #shareButton {
+    background: #4caf50;
+    color: #ffffff;
+}
+
+#generatePDF:hover, #shareButton:hover {
+    background: #388e3c;
+    transform: scale(1.05);
+}
+
+/* Cart and Invoice table */
+#cart {
+    margin-top: 20px;
+    padding-top: 20px;
+    border-top: 2px solid #e0e6ed;
+}
+
+#cart h2 {
+    font-size: 1.4rem;
+    color: #1f3b4d;
+    margin-bottom: 10px;
+    text-align: center;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 10px;
+}
+
+th, td {
+    padding: 8px;
+    text-align: center;
+    font-size: 0.9rem;
+}
+
+th {
+    background-color: #1f3b4d;
+    color: #ffffff;
+    font-weight: 600;
+}
+
+td {
+    background-color: #f7fafc;
+    color: #2b3e50;
+}
+
+#totalAmount {
+    text-align: right;
+    font-size: 1.2rem;
+    font-weight: bold;
+    margin-top: 15px;
+    color: #1f3b4d;
+}
+
+/* Animations */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Responsive adjustments for mobile */
+@media (max-width: 600px) {
+    .container {
+        padding: 15px;
+        margin: 10px;
+    }
+
+    .heading {
+        font-size: 1.4rem;
+    }
+
+    label {
+        font-size: 0.85rem;
+    }
+
+    input[type="text"],
+    input[type="number"],
+    select {
+        padding: 8px;
+        font-size: 0.9rem;
+    }
+
+    button {
+        padding: 10px;
+        font-size: 0.9rem;
+    }
+
+    th, td {
+        padding: 6px;
+        font-size: 0.85rem;
+    }
+
+    #totalAmount {
+        font-size: 1rem;
+    }
+
+    #generatePDF,
+    #shareButton,
+    #addToCart {
+        width: 100%;
+        padding: 10px;
+        font-size: 0.9rem;
+    }
+}

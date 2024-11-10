@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Billing System with Weight in kg/grams</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+</head>
+<body>
+    <div class="container">
+        <h1 class="heading">General Store Billing System</h1>
+
+        <!-- Product Input -->
+        <div class="form-group">
+            <label for="productName">Product Name</label>
+            <input type="text" id="productName" placeholder="Enter product name">
+        </div>
+
+        <div class="form-group">
+            <label for="productPrice">Product Price per kg ($)</label>
+            <input type="number" id="productPrice" placeholder="Enter price per kg" min="0.01" step="0.01">
+        </div>
+
+        <!-- Quantity Input with Units -->
+        <div class="form-group">
+            <label for="quantityWithUnit">Quantity (e.g., "2 kg" or "500 g")</label>
+            <input type="text" id="quantityWithUnit" placeholder="Enter quantity with unit">
+        </div>
+
+        <!-- Add to Cart Button -->
+        <button id="addToCart">Add to Cart</button>
+
+        <!-- Cart Display -->
+        <div id="cart">
+            <h2>Invoice</h2>
+            <table id="cartItems">
+                <thead>
+                    <tr>
+                        <th>Product</th>
+                        <th>Price/kg ($)</th>
+                        <th>Quantity</th>
+                        <th>Total ($)</th>
+                    </tr>
+                </thead>
+                <tbody></tbody>
+            </table>
+            <div id="totalAmount">Total: $0.00</div>
+            <button id="generatePDF">Generate PDF</button>
+        </div>
+
+        <!-- Share Button -->
+        <button id="shareButton">Share Bill</button>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
