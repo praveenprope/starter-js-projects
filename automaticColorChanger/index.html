@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Automatic Color Changer</title>
+    <title>Automatic Color Changer - Space Trip 🌌</title>
     <style>
         * {
             box-sizing: border-box;
@@ -11,22 +11,69 @@
             padding: 0;
         }
 
+        /* Basic Page Styles */
         body {
             display: flex;
             flex-direction: column;
             justify-content: center;
             align-items: center;
             height: 100vh;
-            transition: background 1s ease;
             font-family: Arial, sans-serif;
             overflow: hidden;
+            background-color: #0a0a1a;
+            color: #fff;
+            position: relative;
         }
 
+        /* Star Styles */
+        .stars, .stars2, .stars3 {
+            position: absolute;
+            width: 2px;
+            height: 2px;
+            background: white;
+            border-radius: 50%;
+            animation: starryMovement 50s linear infinite;
+        }
+
+        .stars {
+            box-shadow: 
+                100px 200px #fff, 200px 400px #fff, 300px 600px #fff, 
+                400px 100px #fff, 500px 500px #fff, 600px 700px #fff, 
+                700px 200px #fff, 800px 600px #fff, 900px 300px #fff, 
+                1000px 800px #fff;
+            animation-duration: 100s;
+        }
+
+        .stars2 {
+            box-shadow: 
+                150px 250px #fff, 250px 450px #fff, 350px 650px #fff, 
+                450px 150px #fff, 550px 550px #fff, 650px 750px #fff, 
+                750px 250px #fff, 850px 650px #fff, 950px 350px #fff, 
+                1050px 850px #fff;
+            animation-duration: 120s;
+        }
+
+        .stars3 {
+            box-shadow: 
+                200px 300px #fff, 300px 500px #fff, 400px 700px #fff, 
+                500px 200px #fff, 600px 600px #fff, 700px 800px #fff, 
+                800px 300px #fff, 900px 700px #fff, 1000px 400px #fff, 
+                1100px 900px #fff;
+            animation-duration: 150s;
+        }
+
+        @keyframes starryMovement {
+            from { transform: translateY(0); }
+            to { transform: translateY(-1000px); }
+        }
+
+        /* Text and Button Styles */
         h1 {
-            font-size: 2rem;
-            margin-bottom: 30px;
+            font-size: 2.5rem;
+            margin-bottom: 20px;
             text-align: center;
-            color: #333;
+            color: #ffdd57;
+            text-shadow: 0px 0px 8px rgba(255, 223, 87, 0.6);
             animation: fadeIn 1.5s ease;
         }
 
@@ -38,52 +85,44 @@
             border-radius: 50px;
             margin: 10px;
             cursor: pointer;
-            transition: all 0.3s ease, background-color 0.3s ease;
+            transition: all 0.3s ease;
             display: flex;
             align-items: center;
             color: #fff;
             box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.2);
             position: relative;
             overflow: hidden;
-        }
-
-        button:active {
-            transform: scale(0.9);
-            box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.2);
-        }
-
-        button:hover {
-            transform: translateY(-4px);
+            background: rgba(255, 255, 255, 0.1);
         }
 
         .start-btn {
             background-color: #4CAF50;
-            animation: pulse 1.5s infinite;
         }
 
         .end-btn {
             background-color: #FF5252;
         }
 
-        .speed-btn{
-            background-color: rgb(183, 183, 183);
+        .speed-btn, .lowSpeed-btn {
+            background-color: #5f5f5f;
             color: black;
         }
 
         .emoji {
             margin-right: 10px;
             font-size: 1.5em;
+            color: #FFD700;
+        }
+
+        .speed {
+            font-size: 1.5rem;
+            margin-top: 20px;
+            color: #f5f5f5;
         }
 
         @keyframes fadeIn {
             0% { opacity: 0; }
             100% { opacity: 1; }
-        }
-
-        @keyframes pulse {
-            0% { box-shadow: 0px 4px 15px rgba(0, 255, 0, 0.2); }
-            50% { box-shadow: 0px 8px 20px rgba(0, 255, 0, 0.4); }
-            100% { box-shadow: 0px 4px 15px rgba(0, 255, 0, 0.2); }
         }
 
         @media (max-width: 600px) {
@@ -99,15 +138,24 @@
 </head>
 <body>
 
-    <h1>🌈 Automatic Color Changer 🌈</h1>
+    <!-- Star layers for depth -->
+    <div class="stars"></div>
+    <div class="stars2"></div>
+    <div class="stars3"></div>
+
+    <h1>🚀 Automatic Color Changer - Space Trip 🚀</h1>
+    <h1 class="speed">Speed: 1000ms</h1>
     <button class="start-btn">
-        <span class="emoji">🎨</span> Start
+        <span class="emoji">🌠</span> Start Journey
     </button>
     <button class="end-btn">
-        <span class="emoji">🛑</span> End
+        <span class="emoji">🛑</span> End Journey
     </button>
     <button class="speed-btn">
         <span class="emoji">🚀</span> SpeedUp++
+    </button>
+    <button class="lowSpeed-btn">
+        <span class="emoji">🐢</span> Slow Down
     </button>
 
 </body>
