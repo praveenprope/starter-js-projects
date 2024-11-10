@@ -16,13 +16,19 @@ const randomColors = () => {
 let speedDefaultValue = 1000;
 
 const speedUpFunction = () => {
-    if(speedDefaultValue == 100){
-        speedDefaultValue = speedDefaultValue - 200
-    } else{
+    
+    if(speedDefaultValue == 50){
         speedDefaultValue = speedDefaultValue - 100
+    } else{
+        speedDefaultValue = speedDefaultValue - 50
     }
     console.log(speedDefaultValue)
-    return speedDefaultValue
+
+    
+   if(playInterval){
+    clearInterval(playInterval)
+    playInterval =  setInterval(changeColors,speedDefaultValue)
+   }
 }
 
 
