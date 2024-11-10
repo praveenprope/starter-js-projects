@@ -31,7 +31,7 @@ const speedUpFunction = () => {
    if(playInterval){
     clearInterval(playInterval)
     playInterval =  setInterval(changeColors,speedDefaultValue)
-    showSpeed.textContent = speedDefaultValue;
+    showSpeed.textContent = speedDefaultValue+'ms';
    
    
    }
