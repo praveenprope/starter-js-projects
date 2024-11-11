@@ -12,12 +12,15 @@
             font-family: Arial, sans-serif;
             background-color: #f7f7f7;
             color: #333;
+            margin: 0;
             display: flex;
             justify-content: center;
             align-items: center;
-            height: 100vh;
-            margin: 0;
+            min-height: 100vh;
+            overflow-y: auto;
         }
+        
+        /* Container Styling */
         .container {
             max-width: 600px;
             width: 100%;
@@ -25,30 +28,40 @@
             background-color: #fff;
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
             border-radius: 8px;
+            overflow-y: auto;
+            height: 100%;
         }
+        
         .heading {
             text-align: center;
             color: #333;
             margin-bottom: 20px;
         }
+
+        /* Form and Cart Sections */
         .form-section, .cart-section {
             margin-bottom: 20px;
         }
+
         .form-group {
             margin-bottom: 15px;
         }
+
         label {
             display: block;
             font-weight: bold;
             margin-bottom: 5px;
         }
+
         input[type="text"], input[type="number"] {
             width: 100%;
             padding: 10px;
             border: 1px solid #ddd;
             border-radius: 4px;
             font-size: 16px;
+            box-sizing: border-box;
         }
+
         button {
             background-color: #4CAF50;
             color: #fff;
@@ -57,33 +70,43 @@
             border-radius: 4px;
             cursor: pointer;
             font-size: 16px;
+            width: 100%;
+            box-sizing: border-box;
         }
+
         button:hover {
             background-color: #45a049;
         }
+
         /* Cart Table Styling */
         .cart-section {
             border-top: 1px solid #ddd;
             padding-top: 20px;
         }
+
         .cart-section h2 {
             margin-bottom: 10px;
+            text-align: center;
         }
+
         /* Responsive Table Styling */
         .table-wrapper {
             overflow-x: auto;
         }
+
         #cartItems {
             width: 100%;
             border-collapse: collapse;
-            min-width: 500px; /* Minimum width for better mobile scrolling */
+            min-width: 500px;
         }
+
         #cartItems th, #cartItems td {
             padding: 10px;
             border: 1px solid #ddd;
             text-align: center;
-            white-space: nowrap; /* Prevent wrapping */
+            white-space: nowrap;
         }
+
         /* Total Amount Styling */
         #totalAmount {
             font-size: 1.2em;
@@ -98,13 +121,27 @@
             overflow: hidden;
             white-space: nowrap;
         }
+
         /* Mobile-Friendly Adjustments */
         @media (max-width: 600px) {
             .container {
                 padding: 15px;
+                box-sizing: border-box;
             }
+            
+            /* Reduce font size on smaller screens */
             #totalAmount {
                 font-size: 1em;
+            }
+
+            /* Flexibly position the input fields for better visibility */
+            input[type="text"], input[type="number"] {
+                font-size: 14px;
+            }
+
+            button {
+                font-size: 14px;
+                padding: 8px 16px;
             }
         }
     </style>
