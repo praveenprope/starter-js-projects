@@ -3,49 +3,163 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Billing System with Weight in qty kg/grams</title>
+    <title>Billing System with Weight in kg/grams</title>
     <link rel="stylesheet" href="style.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+    <style>
+        /* General Styling */
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f7f7f7;
+            color: #333;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+        .container {
+            max-width: 600px;
+            width: 100%;
+            padding: 20px;
+            background-color: #fff;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+        }
+        .heading {
+            text-align: center;
+            color: #333;
+            margin-bottom: 20px;
+        }
+        .form-section, .cart-section {
+            margin-bottom: 20px;
+        }
+        .form-group {
+            margin-bottom: 15px;
+        }
+        label {
+            display: block;
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+        input[type="text"], input[type="number"] {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            font-size: 16px;
+        }
+        button {
+            background-color: #4CAF50;
+            color: #fff;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+        button:hover {
+            background-color: #45a049;
+        }
+        /* Cart Table Styling */
+        .cart-section {
+            border-top: 1px solid #ddd;
+            padding-top: 20px;
+        }
+        .cart-section h2 {
+            margin-bottom: 10px;
+        }
+        /* Responsive Table Styling */
+        .table-wrapper {
+            overflow-x: auto;
+        }
+        #cartItems {
+            width: 100%;
+            border-collapse: collapse;
+            min-width: 500px; /* Minimum width for better mobile scrolling */
+        }
+        #cartItems th, #cartItems td {
+            padding: 10px;
+            border: 1px solid #ddd;
+            text-align: center;
+            white-space: nowrap; /* Prevent wrapping */
+        }
+        /* Total Amount Styling */
+        #totalAmount {
+            font-size: 1.2em;
+            font-weight: bold;
+            color: #333;
+            text-align: right;
+            padding: 10px;
+            border-top: 1px solid #ddd;
+            background-color: #f0f0f0;
+            border-radius: 4px;
+            margin-top: 10px;
+            overflow: hidden;
+            white-space: nowrap;
+        }
+        /* Mobile-Friendly Adjustments */
+        @media (max-width: 600px) {
+            .container {
+                padding: 15px;
+            }
+            #totalAmount {
+                font-size: 1em;
+            }
+        }
+    </style>
 </head>
 <body>
     <div class="container">
         <h1 class="heading">General Store Billing System</h1>
 
-        <!-- Product Input -->
-        <div class="form-group">
-            <label for="productName">Product Name</label>
-            <input type="text" id="productName" placeholder="Enter product name">
+        <!-- Product Input Section -->
+        <div class="form-section">
+            <div class="form-group">
+                <label for="productName">Product Name</label>
+                <input type="text" id="productName" placeholder="Enter product name">
+            </div>
+
+            <div class="form-group">
+                <label for="productPricePerKg">Product Price per kg (₹)</label>
+                <input type="number" id="productPricePerKg" placeholder="Enter price per kg" min="0.01" step="0.01">
+            </div>
+
+            <div class="form-group">
+                <label for="productPricePerQuantity">Product Price per quantity (₹)</label>
+                <input type="number" id="productPricePerQuantity" placeholder="Enter price per quantity" min="0.01" step="0.01">
+            </div>
+
+            <!-- Quantity Input with Units -->
+            <div class="form-group">
+                <label for="quantityWithUnit">Quantity (e.g., "2 kg" or "500 g")</label>
+                <input type="text" id="quantityWithUnit" placeholder="Enter quantity with unit">
+            </div>
+
+            <!-- Add to Cart Button -->
+            <button id="addToCart">Add to Cart</button>
         </div>
 
-        <div class="form-group">
-            <label for="productPrice">Product Price per kg ($)</label>
-            <input type="number" id="productPrice" placeholder="Enter price per kg" min="0.01" step="0.01">
-        </div>
-
-        <!-- Quantity Input with Units -->
-        <div class="form-group">
-            <label for="quantityWithUnit">Quantity (e.g., "2 kg" or "500 g")</label>
-            <input type="text" id="quantityWithUnit" placeholder="Enter quantity with unit">
-        </div>
-
-        <!-- Add to Cart Button -->
-        <button id="addToCart">Add to Cart</button>
-
-        <!-- Cart Display -->
-        <div id="cart">
+        <!-- Cart Display Section -->
+        <div id="cart" class="cart-section">
             <h2>Invoice</h2>
-            <table id="cartItems">
-                <thead>
-                    <tr>
-                        <th>Product</th>
-                        <th>Price/kg ($)</th>
-                        <th>Quantity</th>
-                        <th>Total ($)</th>
-                    </tr>
-                </thead>
-                <tbody></tbody>
-            </table>
-            <div id="totalAmount">Total: $0.00</div>
+            <div class="table-wrapper">
+                <table id="cartItems">
+                    <thead>
+                        <tr>
+                            <th>Product</th>
+                            <th>Price/kg (₹)</th>
+                            <th>Price/quantity (₹)</th>
+                            <th>Quantity</th>
+                            <th>Total (₹)</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <!-- Cart items will be dynamically added here -->
+                    </tbody>
+                </table>
+            </div>
+            <div id="totalAmount">Total: ₹0.00</div>
             <button id="generatePDF">Generate PDF</button>
         </div>
 
