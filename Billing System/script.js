@@ -22,6 +22,25 @@ const logCurrentValues = () => {
     console.log('Quantity with Unit:', quantityWithUnit);
 };
 
+// Disable price per quantity when price per kg is filled and vice versa
+pricePerKgInput.addEventListener('input', () => {
+    if (pricePerKgInput.value) {
+        pricePerQuantityInput.disabled = true;
+    } else {
+        pricePerQuantityInput.disabled = false;
+    }
+    logCurrentValues();
+});
+
+pricePerQuantityInput.addEventListener('input', () => {
+    if (pricePerQuantityInput.value) {
+        pricePerKgInput.disabled = true;
+    } else {
+        pricePerKgInput.disabled = false;
+    }
+    logCurrentValues();
+});
+
 // Function to add the item to the cart
 const addToCart = () => {
     const product = productInput.value;
@@ -44,7 +63,8 @@ const addToCart = () => {
         const quantity = parseFloat(quantityWithUnit) / 1000 || 0;
         totalPrice = pricePerKg * quantity;
     } else {
-        totalPrice = pricePerQuantity;
+        const quantity = parseFloat(quantityWithUnit) || 0;
+        totalPrice = pricePerQuantity * quantity;
     }
 
     // Add to cart display
@@ -62,11 +82,13 @@ const addToCart = () => {
     totalAmount += totalPrice;
     totalAmountDiv.textContent = `Total: ₹${totalAmount.toFixed(2)}`;
 
-    // Clear input fields
+    // Clear input fields and re-enable both fields
     productInput.value = '';
     pricePerKgInput.value = '';
     pricePerQuantityInput.value = '';
     quantityWithUnitInput.value = '';
+    pricePerKgInput.disabled = false;
+    pricePerQuantityInput.disabled = false;
 };
 
 // Function to generate PDF
@@ -86,7 +108,6 @@ const generatePDF = () => {
 
     yPosition += 10;
 
-    // Add each cart item to PDF
     cartItemsTable.querySelectorAll('tr').forEach(row => {
         const cells = row.querySelectorAll('td');
         doc.text(cells[0].textContent, 10, yPosition);
@@ -97,21 +118,22 @@ const generatePDF = () => {
         yPosition += 10;
     });
 
-    // Add total amount to PDF
     doc.text(`Total: ₹${totalAmount.toFixed(2)}`, 10, yPosition + 10);
-    doc.save("invoice.pdf");
+
+    // Save the PDF file
+    const pdfFileName = "invoice.pdf";
+    doc.save(pdfFileName);
 };
 
-// Event listeners for input logging and cart functions
-productInput.addEventListener('input', logCurrentValues);
-pricePerKgInput.addEventListener('input', logCurrentValues);
-pricePerQuantityInput.addEventListener('input', logCurrentValues);
-quantityWithUnitInput.addEventListener('input', logCurrentValues);
+const shareOnWhatsApp = () => {
+    // WhatsApp share message and link to the downloaded PDF
+    const message = encodeURIComponent("Here's your billing invoice. Please check the attached PDF.");
+    const whatsappUrl = `https://api.whatsapp.com/send?text=${message}`;
 
-addToCartButton.addEventListener('click', () => {
-    console.log('Adding to Cart with current values:');
-    logCurrentValues();
-    addToCart();
-});
+    // Open WhatsApp share link
+    window.open(whatsappUrl, "_blank");
+};
 
+// Event listeners
 generatePDFButton.addEventListener('click', generatePDF);
+shareButton.addEventListener('click', shareOnWhatsApp);
