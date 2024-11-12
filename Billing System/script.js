@@ -108,6 +108,7 @@ const generatePDF = () => {
 
     yPosition += 10;
 
+    // Add each cart item to PDF
     cartItemsTable.querySelectorAll('tr').forEach(row => {
         const cells = row.querySelectorAll('td');
         doc.text(cells[0].textContent, 10, yPosition);
@@ -118,22 +119,21 @@ const generatePDF = () => {
         yPosition += 10;
     });
 
+    // Add total amount to PDF
     doc.text(`Total: ₹${totalAmount.toFixed(2)}`, 10, yPosition + 10);
-
-    // Save the PDF file
-    const pdfFileName = "invoice.pdf";
-    doc.save(pdfFileName);
+    doc.save("invoice.pdf");
 };
 
-const shareOnWhatsApp = () => {
-    // WhatsApp share message and link to the downloaded PDF
-    const message = encodeURIComponent("Here's your billing invoice. Please check the attached PDF.");
-    const whatsappUrl = `https://api.whatsapp.com/send?text=${message}`;
+// Event listeners for input logging and cart functions
+productInput.addEventListener('input', logCurrentValues);
+pricePerKgInput.addEventListener('input', logCurrentValues);
+pricePerQuantityInput.addEventListener('input', logCurrentValues);
+quantityWithUnitInput.addEventListener('input', logCurrentValues);
 
-    // Open WhatsApp share link
-    window.open(whatsappUrl, "_blank");
-};
+addToCartButton.addEventListener('click', () => {
+    console.log('Adding to Cart with current values:');
+    logCurrentValues();
+    addToCart();
+});
 
-// Event listeners
 generatePDFButton.addEventListener('click', generatePDF);
-shareButton.addEventListener('click', shareOnWhatsApp);
