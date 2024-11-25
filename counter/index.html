@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Emoji Counter</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            margin: 0;
+            background: linear-gradient(135deg, #fbc2eb, #a6c1ee);
+        }
+
+        h1#counter {
+            font-size: 4rem;
+            color: #333;
+            margin: 20px 0;
+            animation: pulse 1s infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% {
+                transform: scale(1);
+            }
+            50% {
+                transform: scale(1.1);
+            }
+        }
+
+        .btn {
+            font-size: 2rem;
+            padding: 10px 20px;
+            margin: 10px;
+            border: none;
+            border-radius: 10px;
+            cursor: pointer;
+            color: #fff;
+            background-color: #ff6f61;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            transition: transform 0.2s, background-color 0.3s;
+        }
+
+        .btn:hover {
+            transform: scale(1.1);
+            background-color: #ff3d3d;
+        }
+
+        .btn:active {
+            transform: scale(0.9);
+        }
+
+        .btn.increase::after {
+            content: ' ➕';
+        }
+
+        .btn.decrease::after {
+            content: ' ➖';
+        }
+
+        @media (max-width: 600px) {
+            h1#counter {
+                font-size: 2.5rem;
+            }
+            .btn {
+                font-size: 1.5rem;
+                padding: 8px 15px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <h1 id="counter">0 🌟</h1>
+    <button class="btn increase">+</button>
+    <button class="btn decrease">-</button>
+</body>
+<script>
+const counterValue = document.querySelector('#counter');
+const incremetButton = document.querySelector('.btn.increase');
+const dicrementButton = document.querySelector('.btn.decrease');
+
+// Function to get emoji based on value
+function getEmoji(value) {
+    if (value > 0) {
+        return '🔥'; // Positive numbers get a fire emoji
+    } else if (value < 0) {
+        return '❄️'; // Negative numbers get a snowflake emoji
+    } else {
+        return '🌟'; // Zero gets a star emoji
+    }
+}
+
+incremetButton.addEventListener('click', () => {
+    let value = parseInt(counterValue.textContent);
+    value = value + 1;
+    counterValue.textContent = `${value} ${getEmoji(value)}`; 
+});
+
+dicrementButton.addEventListener('click', () => {
+    let value = parseInt(counterValue.textContent);
+   
+        value = value - 1;
+   
+    counterValue.textContent = `${value} ${getEmoji(value)}`;
+});
+</script>
+</html>
