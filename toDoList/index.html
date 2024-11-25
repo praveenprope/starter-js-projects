@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cool To-Do List</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: #f7f7f7;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin: 0;
+            padding: 0;
+        }
+        h1 {
+            color: #333;
+        }
+        #todo-input {
+            padding: 10px;
+            width: 250px;
+            border: 2px solid #ccc;
+            border-radius: 5px;
+            margin-bottom: 10px;
+        }
+        #add-btn {
+            padding: 10px 20px;
+            background: #5cb85c;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        #add-btn:hover {
+            background: #4cae4c;
+        }
+        #todo-list {
+            list-style: none;
+            padding: 0;
+            width: 300px;
+        }
+        li {
+            background: #fff;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            padding: 10px;
+            margin-bottom: 5px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        button {
+            background: none;
+            border: none;
+            cursor: pointer;
+            font-size: 14px;
+        }
+        button:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <h1>📝 Cool To-Do List</h1>
+    <input type="text" id="todo-input" placeholder="Add a new task">
+    <button id="add-btn">➕ Add</button>
+    <ul id="todo-list"></ul>
+
+    <script src="script.js"></script>
+</body>
+</html>
