@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tip Calculator</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Comic Sans MS', 'Arial', sans-serif;
+    }
+
+    body {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+      background: linear-gradient(145deg, #ff9a8b, #fad0c4);
+      color: #4a4a4a;
+    }
+
+    .calculator-container {
+      text-align: center;
+      padding: 2rem;
+      background: rgba(255, 255, 255, 0.9);
+      border-radius: 20px;
+      box-shadow: 5px 10px 20px rgba(0, 0, 0, 0.2);
+      max-width: 400px;
+      width: 90%;
+    }
+
+    .calculator-container h1 {
+      font-size: 2.5rem;
+      margin-bottom: 1rem;
+      color: #ff7675;
+      text-shadow: 2px 2px #f8c291;
+    }
+
+    .input-group {
+      margin-bottom: 1.5rem;
+    }
+
+    .input-group input {
+      width: 100%;
+      padding: 0.8rem;
+      border: 2px solid #ffeaa7;
+      border-radius: 10px;
+      font-size: 1rem;
+      margin-top: 0.5rem;
+      transition: box-shadow 0.3s;
+    }
+
+    .input-group input:focus {
+      outline: none;
+      box-shadow: 0 0 10px #fdcb6e;
+    }
+
+    .input-group label {
+      font-size: 1.3rem;
+      font-weight: bold;
+      color: #6c5ce7;
+    }
+
+    .calculate-btn {
+      background: #81ecec;
+      color: #2d3436;
+      padding: 0.8rem 2rem;
+      border: none;
+      border-radius: 25px;
+      font-size: 1.1rem;
+      font-weight: bold;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      margin-top: 1rem;
+    }
+
+    .calculate-btn:hover {
+      background: #74b9ff;
+      transform: scale(1.1);
+    }
+
+    .output {
+      margin-top: 2rem;
+      font-size: 1.5rem;
+      color: #00cec9;
+      font-weight: bold;
+      text-shadow: 1px 1px #636e72;
+    }
+
+    .emoji {
+      font-size: 2.5rem;
+    }
+
+    @media (max-width: 768px) {
+      .calculator-container {
+        padding: 1.5rem;
+      }
+
+      .calculator-container h1 {
+        font-size: 2rem;
+      }
+
+      .input-group input {
+        font-size: 0.9rem;
+      }
+
+      .calculate-btn {
+        padding: 0.7rem 1.5rem;
+        font-size: 1rem;
+      }
+
+      .output {
+        font-size: 1.3rem;
+      }
+
+      .emoji {
+        font-size: 2rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="calculator-container">
+    <h1>🍕  Tip Calculator 🥤</h1>
+    <div class="input-group">
+      <label for="billAmount">💸 Your Bill Amount:</label>
+      <input type="number" id="billAmount" placeholder="Enter bill amount">
+    </div>
+    <div class="input-group">
+      <label for="tipPercentage">🧮 Tip Percentage:</label>
+      <input type="number" id="tipPercentage" placeholder="Enter tip %">
+    </div>
+    <button class="calculate-btn">Calculate 🚀</button>
+    <div id="output" class="output">🦄 Ready for your tip! 🌈</div>
+  </div>
+</body>
+        <script>
+
+const Bill = document.querySelector('#billAmount');
+const Tip = document.querySelector('#tipPercentage');
+const Button = document.querySelector('.calculate-btn');
+const Output = document.querySelector('.output');
+
+Button.addEventListener('click', () => {
+  let B = parseFloat(Bill.value);
+  let T = parseFloat(Tip.value);
+
+  if (isNaN(B) || isNaN(T) || B <= 0 || T <= 0) {
+    Output.innerHTML = `<span class="emoji">⚠️</span> Please enter valid values!`;
+    return;
+  }
+
+  let tipAmount = (B * T) / 100;
+  let totalAmount = B + tipAmount;
+
+  Output.innerHTML = `
+    <span class="emoji">🍭</span> Tip: ₹${tipAmount.toFixed(2)}<br>
+    <span class="emoji">💵</span> Total Bill: ₹${totalAmount.toFixed(2)}
+  `;
+});
+
+
+        </script>
+</html>
