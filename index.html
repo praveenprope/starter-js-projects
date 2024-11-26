@@ -4,10 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>JavaScript Projects</title>
-    <!-- Link to Google Fonts for cool fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&family=Poppins:wght@300;600&display=swap" rel="stylesheet">
     <style>
-        /* Global reset */
         * {
             box-sizing: border-box;
             margin: 0;
@@ -15,21 +13,18 @@
             text-decoration: none;
         }
 
-        /* Body styling */
         body {
             background: linear-gradient(135deg, #6a11cb 0%, #2575fc 100%);
             font-family: 'Poppins', sans-serif;
             display: flex;
             justify-content: center;
-            align-items: center; /* Center the content vertically and horizontally */
+            align-items: center;
             flex-direction: column;
-            min-height: 100vh; /* Allow full height */
+            min-height: 100vh;
             color: white;
             padding: 20px;
-            overflow-y: auto; /* Enable scrolling if needed */
         }
 
-        /* Header styling */
         h1 {
             font-size: 3.5rem;
             text-align: center;
@@ -40,34 +35,31 @@
             text-shadow: 2px 2px 6px rgba(0, 0, 0, 0.3);
         }
 
-        /* Button container */
-        .buttons-container {
-            display: flex;
-            flex-direction: column;
+        .grid-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
             gap: 15px;
-            align-items: center; /* Center buttons horizontally */
-            justify-content: center; /* Center buttons vertically */
             width: 100%;
-            max-width: 500px;
+            max-width: 1000px;
         }
 
-        /* Common button styling */
-        button {
-            font-size: 1.2rem;
-            font-weight: 500;
-            padding: 15px;
-            background-color: #ff6347;
-            border: none;
+        .card {
+            display: flex;
+            align-items: center;
+            justify-content: center;
             border-radius: 12px;
+            color: white;
+            text-align: center;
+            font-size: 1rem;
+            font-weight: 500;
             cursor: pointer;
             transition: transform 0.3s ease, box-shadow 0.3s ease;
-            text-align: center;
             position: relative;
             overflow: hidden;
-            width: 100%;
+            background-color: #3498db;
         }
 
-        button a {
+        .card a {
             color: white;
             text-decoration: none;
             display: block;
@@ -75,81 +67,14 @@
             height: 100%;
         }
 
-        button:hover {
+        .card:hover {
             transform: translateY(-5px);
             box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2);
         }
 
-        button:before {
-            content: "";
-            position: absolute;
-            top: -150%;
-            left: -150%;
-            width: 300%;
-            height: 300%;
-            background-color: rgba(255, 255, 255, 0.1);
-            transition: all 0.4s ease;
-            border-radius: 50%;
-        }
-
-        button:hover:before {
-            top: 50%;
-            left: 50%;
-            width: 0;
-            height: 0;
-        }
-
-        /* Different colors for each button */
-        button:nth-child(1) {
-            background-color: #ff7675;
-        }
-
-        button:nth-child(2) {
-            background-color: #f39c12;
-        }
-
-        button:nth-child(3) {
-            background-color: #3498db;
-        }
-
-        button:nth-child(4) {
-            background-color: #2ecc71;
-        }
-
-        button:nth-child(5) {
-            background-color: #9b59b6;
-        }
-
-        /* Hover effects for buttons */
-        button:nth-child(1):hover {
-            background-color: #e74c3c;
-        }
-
-        button:nth-child(2):hover {
-            background-color: #e67e22;
-        }
-
-        button:nth-child(3):hover {
-            background-color: #2980b9;
-        }
-
-        button:nth-child(4):hover {
-            background-color: #27ae60;
-        }
-
-        button:nth-child(5):hover {
-            background-color: #8e44ad;
-        }
-
-        /* Responsive design for small screens */
         @media (max-width: 600px) {
             h1 {
                 font-size: 2.5rem;
-            }
-
-            button {
-                font-size: 1rem;
-                padding: 12px;
             }
         }
     </style>
@@ -158,19 +83,44 @@
 
     <h1>JavaScript Projects</h1>
 
-    <div class="buttons-container">
-        <button><a href="backgroundColorChanger/index.html">🎨🌈💥 Background Color Changer 🌈💥🎉</a></button>
-        <button><a href="bmiCalculator/index.html">🏋️‍♂️💪🧘‍♀️ BMI Calculator 🧘‍♂️💪🏋️‍♀️</a></button>
-        <button><a href="DigitalClock/index.html">⌚💻📱 Digital Clock 📱💻⌚</a></button>
-        <button><a href="guessNumberGame/index.html">🎲🔢✨ Guess the Number ✨🔢🎲</a></button>
-        <button><a href="Interactive WWE Superstar Gallery/index.html">🎉🔥🤼‍♂️ WWE Superstar Gallery 💥🥇💪</a></button>
-        <button><a href="automaticColorChanger/index.html">🌈🖌️🔮 Automatic Color Changer 🎉🌟🎭</a></button>
-        <button><a href="Billing System/index.html">🧾💡💸🖋️🎉💼 Bill Generator 📈🎨🎯</a></button>
-        <button><a href="GuessNumber/index.html">🎲🧠🔍🎉🕹️ Guess Number Game 2 🎰🔢🏆</a></button>
-        <button><a href="https://praveenprope.github.io/Mood-Play/">🎵🎧🎤🎧🎼🌟 Mood Music Player 🎮🎵🎤</a></button>
-        <button><a href="counter/index.html">🔢⏱️📈✨📌 Counter 🚀🎉📘</a> </button>
-        <button><a href="toDoList/index.html">✅📝📋✨📌To-Do List 🌟🚀📖</a>        </button>
+    <div class="grid-container">
+        <div class="card"><a href="backgroundColorChanger/index.html">🎨🌈 Background Changer</a></div>
+        <div class="card"><a href="bmiCalculator/index.html">🏋️‍♂️ BMI Calculator</a></div>
+        <div class="card"><a href="DigitalClock/index.html">⌚ Digital Clock</a></div>
+        <div class="card"><a href="guessNumberGame/index.html">🎲 Guess the Number</a></div>
+        <div class="card"><a href="Interactive WWE Superstar Gallery/index.html">🔥 WWE Gallery</a></div>
+        <div class="card"><a href="automaticColorChanger/index.html">🌈 Auto Color Changer</a></div>
+        <div class="card"><a href="Billing System/index.html">🧾 Bill Generator</a></div>
+        <div class="card"><a href="GuessNumber/index.html">🎲 Guess Number 2</a></div>
+        <div class="card"><a href="https://praveenprope.github.io/Mood-Play/">🎵 Mood Player</a></div>
+        <div class="card"><a href="counter/index.html">🔢 Counter</a></div>
+        <div class="card"><a href="toDoList/index.html">✅ To-Do List</a></div>
     </div>
+
+    <script>
+        // Generate random colors and sizes for cards
+        function getRandomColor() {
+            const letters = '0123456789ABCDEF';
+            let color = '#';
+            for (let i = 0; i < 6; i++) {
+                color += letters[Math.floor(Math.random() * 16)];
+            }
+            return color;
+        }
+
+        function getRandomSize() {
+            const sizes = ['span 1', 'span 2']; // Card can span 1x1 or 2x2 grid spaces
+            return sizes[Math.floor(Math.random() * sizes.length)];
+        }
+
+        // Apply random styles to cards
+        const cards = document.querySelectorAll('.card');
+        cards.forEach(card => {
+            card.style.backgroundColor = getRandomColor();
+            card.style.gridColumn = getRandomSize();
+            card.style.gridRow = getRandomSize();
+        });
+    </script>
 
 </body>
 </html>
