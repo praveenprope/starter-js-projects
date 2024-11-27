@@ -1,0 +1,111 @@
+/* General Styles (unchanged) */
+body {
+    font-family: 'Poppins', sans-serif;
+    background: linear-gradient(135deg, #0f0c29, #302b63, #24243e);
+    color: #ffffff;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    margin: 0;
+    padding: 0 1rem; /* Add padding for smaller screens */
+  }
+  
+  .title {
+    font-size: 3rem;
+    text-align: center;
+    text-shadow: 0 0 20px #ffffff;
+    margin: 1rem 0;
+  }
+  
+  .dice-container {
+    display: flex;
+    justify-content: space-around;
+    width: 80%;
+    max-width: 900px; /* Limit the width for large screens */
+    margin: 2rem 0;
+    gap: 1rem; /* Space between players */
+  }
+  
+  .player {
+    text-align: center;
+    flex: 1; /* Allow players to take up equal space */
+  }
+  
+  .dice-face {
+    font-size: 5rem;
+    margin: 1rem 0;
+  }
+  
+  .roll-button {
+    font-size: 1.5rem;
+    padding: 0.8rem 1.5rem;
+    background: #ff6f61;
+    color: white;
+    border: none;
+    border-radius: 10px;
+    box-shadow: 0px 0px 15px #ff6f61;
+    cursor: pointer;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
+  
+  .roll-button:hover {
+    transform: scale(1.1);
+    box-shadow: 0px 0px 25px #ff9f81;
+  }
+  
+  .result {
+    font-size: 2rem;
+    margin-top: 1rem;
+    text-shadow: 0 0 10px #ffffff;
+  }
+  
+  /* Responsive Styles */
+  @media (max-width: 768px) {
+    .title {
+      font-size: 2.5rem;
+    }
+  
+    .dice-container {
+      flex-direction: column; /* Stack players vertically */
+      align-items: center;
+    }
+  
+    .player {
+      margin-bottom: 1rem; /* Add spacing between stacked players */
+    }
+  
+    .dice-face {
+      font-size: 4rem; /* Scale down dice face */
+    }
+  
+    .roll-button {
+      font-size: 1.2rem;
+      padding: 0.6rem 1.2rem;
+    }
+  
+    .result {
+      font-size: 1.5rem;
+    }
+  }
+  
+  @media (max-width: 480px) {
+    .title {
+      font-size: 2rem;
+    }
+  
+    .dice-face {
+      font-size: 3rem; /* Smaller dice for tiny screens */
+    }
+  
+    .roll-button {
+      font-size: 1rem;
+      padding: 0.5rem 1rem;
+    }
+  
+    .result {
+      font-size: 1.2rem;
+    }
+  }
+  
