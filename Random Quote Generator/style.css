@@ -1,0 +1,92 @@
+/* General Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  
+  body {
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: url('https://via.placeholder.com/1920x1080/141321/FFFFFF?text=Pixel+Art+Background') no-repeat center center/cover;
+    font-family: 'Press Start 2P', cursive, sans-serif;
+    color: #fff;
+    overflow: hidden;
+  }
+  
+  /* Container */
+  .container {
+    text-align: center;
+    background: rgba(0, 0, 0, 0.8);
+    border: 3px solid #ff00ff;
+    padding: 30px;
+    max-width: 500px;
+    width: 90%;
+    border-radius: 15px;
+    box-shadow: 0 0 20px #00ffff, 0 0 40px #ff00ff;
+  }
+  
+  /* Title */
+  .title {
+    font-size: 1.5rem;
+    color: #ff00ff;
+    margin-bottom: 20px;
+    text-shadow: 0 0 10px #ff00ff, 0 0 20px #00ffff;
+  }
+  
+  /* Quote Box */
+  .quote-box {
+    background: rgba(0, 0, 0, 0.7);
+    padding: 20px;
+    border-radius: 10px;
+    border: 2px solid #00ffff;
+    margin-bottom: 20px;
+    box-shadow: 0 0 15px #ff00ff;
+  }
+  
+  .quote {
+    font-size: 1rem;
+    line-height: 1.5;
+    color: #00ffff;
+    text-shadow: 0 0 10px #00ffff, 0 0 20px #ff00ff;
+    margin-bottom: 10px;
+  }
+  
+  .author {
+    display: block;
+    font-size: 0.9rem;
+    color: #ff00ff;
+    text-shadow: 0 0 5px #ff00ff;
+    margin-top: 10px;
+  }
+  
+  /* Button */
+  .btn {
+    display: inline-block;
+    padding: 10px 20px;
+    font-size: 1rem;
+    font-weight: bold;
+    border: 2px solid #ff00ff;
+    border-radius: 5px;
+    background: linear-gradient(45deg, #ff00ff, #00ffff);
+    color: #000;
+    cursor: pointer;
+    text-transform: uppercase;
+    transition: all 0.3s ease-in-out;
+  }
+  
+  .btn:hover {
+    background: linear-gradient(45deg, #00ffff, #ff00ff);
+    box-shadow: 0 0 15px #ff00ff, 0 0 30px #00ffff;
+  }
+  
+  /* Footer */
+  .footer-text {
+    margin-top: 20px;
+    font-size: 0.8rem;
+    color: #8b00ff;
+    text-shadow: 0 0 5px #ff00ff;
+  }
+  
