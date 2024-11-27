@@ -29,11 +29,23 @@
             font-size: 3.5rem;
             text-align: center;
             color: white;
+            margin-bottom: 20px;
+            font-weight: 700;
+            letter-spacing: 2px;
+            text-shadow: 2px 2px 6px rgba(0, 0, 0, 0.3);
+        }
+
+
+        h3 {
+            font-size: 2rem;
+            text-align: center;
+            color: white;
             margin-bottom: 30px;
             font-weight: 700;
             letter-spacing: 2px;
             text-shadow: 2px 2px 6px rgba(0, 0, 0, 0.3);
         }
+
 
         .grid-container {
             display: grid;
@@ -48,7 +60,7 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            border-radius: 12px;
+            /* border-radius: 12px; */
             color: white;
             text-align: center;
             font-size: 1.3rem;
@@ -113,6 +125,7 @@
 <body>
 
     <h1>JavaScript Projects</h1>
+    <h3 id="totalP" ></h3>
 
     <div class="grid-container" id="grid-container">
         <div class="card"><a href="backgroundColorChanger/index.html">🎨 Background Changer</a></div>
@@ -128,11 +141,17 @@
         <div class="card"><a href="toDoList/index.html">✅ To-Do List</a></div>
         <div class="card"><a href="Image Slider/index.html">🖼️▶️ Image Slider</a></div>
         <div class="card"><a href="palindrome checker/index.html">🔄🔍 Palindrome Checker</a></div>
-
+        <div class="card"><a href="Random Quote Generator/index.html">✨📖Random Quote Generator</a></div>
     </div>
 
     <script>
-        // Random background color on reload
+       
+     const totalP = document.getElementById('totalP');
+     const gridContainer = document.querySelector('.grid-container');
+     const gridSize = gridContainer.children;
+     totalP.textContent = `Total: = ${gridSize.length}`
+
+
         function getRandomColor() {
             const letters = '0123456789ABCDEF';
             let color = '#';
