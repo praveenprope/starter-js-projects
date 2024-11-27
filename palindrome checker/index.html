@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Palindrome Checker</title>
+  <style>
+    /* General Reset */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background: url('https://e0.pxfuel.com/wallpapers/416/425/desktop-wallpaper-black-car-neon-lamborghini-vehicle-artwork-rear-view-%E2%80%A2-for-you-for-mobile-electric-blue-car.jpg') no-repeat center center/cover;
+      color: #fff;
+      font-family: 'Arial', sans-serif;
+      overflow: hidden;
+    }
+
+    .container {
+      text-align: center;
+      background: rgba(0, 0, 0, 0.85);
+      border: 3px solid #8b00ff;
+      border-radius: 20px;
+      padding: 30px;
+      max-width: 500px;
+      width: 90%;
+      box-shadow: 0 0 20px #ff00ff, 0 0 40px #8b00ff, 0 0 60px #00ffff;
+      animation: float 5s infinite ease-in-out;
+    }
+
+    .title {
+      font-size: 2.5rem;
+      margin-bottom: 25px;
+      color: #ff00ff;
+      text-shadow: 0 0 10px #ff00ff, 0 0 20px #8b00ff;
+    }
+
+    form {
+      margin-bottom: 20px;
+    }
+
+    .input {
+      width: calc(100% - 20px);
+      max-width: 400px;
+      padding: 15px;
+      font-size: 1rem;
+      border: 2px solid #00ffff;
+      border-radius: 8px;
+      background: rgba(0, 0, 0, 0.8);
+      color: #fff;
+      margin-bottom: 20px;
+      outline: none;
+      transition: all 0.3s ease-in-out;
+    }
+
+    .input:focus {
+      border-color: #ff00ff;
+      box-shadow: 0 0 10px #ff00ff, 0 0 15px #00ffff;
+    }
+
+    .btn {
+      display: inline-block;
+      padding: 12px 30px;
+      font-size: 1.1rem;
+      font-weight: bold;
+      border: 2px solid #8b00ff;
+      border-radius: 8px;
+      background: linear-gradient(45deg, #ff00ff, #00ffff);
+      color: #000;
+      cursor: pointer;
+      text-transform: uppercase;
+      transition: all 0.3s ease-in-out;
+    }
+
+    .btn:hover {
+      background: linear-gradient(45deg, #00ffff, #ff00ff);
+      box-shadow: 0 0 15px #ff00ff, 0 0 30px #00ffff;
+    }
+
+    .result {
+      font-size: 1.5rem;
+      margin-top: 20px;
+      color: #8b00ff;
+      text-shadow: 0 0 10px #ff00ff, 0 0 20px #00ffff;
+      word-wrap: break-word;
+    }
+
+    /* Floating Animation */
+    @keyframes float {
+      0%, 100% {
+        transform: translateY(0);
+      }
+      50% {
+        transform: translateY(-10px);
+      }
+    }
+
+    /* Responsive Design */
+    @media (max-width: 768px) {
+      .container {
+        padding: 20px;
+      }
+
+      .title {
+        font-size: 2rem;
+      }
+
+      .input {
+        font-size: 0.9rem;
+      }
+
+      .btn {
+        font-size: 0.9rem;
+        padding: 10px 20px;
+      }
+
+      .result {
+        font-size: 1.2rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1 class="title">🔮 Palindrome Checker</h1>
+    <form action="#" method="post">
+      <input 
+        type="text" 
+        name="palindrome" 
+        placeholder="Enter your string" 
+        class="input" 
+        required>
+      <button type="submit" class="btn">Check</button>
+    </form>
+    <p class="result">Your result will appear here...</p>
+  </div>
+</body>
+   <script>
+
+const checkButton = document.querySelector('.btn');
+const inputValue = document.querySelector('.input');
+
+checkButton.addEventListener('click', (e) => {
+  e.preventDefault();
+
+  let string = inputValue.value.trim();
+  let reversedString = [...string].reverse().join('');
+
+  if (string.toLowerCase() === reversedString.toLowerCase()) {
+    document.querySelector('.result').textContent = "✅ It's a Palindrome!";
+  } else {
+    document.querySelector('.result').textContent = "❌ Not a Palindrome.";
+  }
+});
+
+
+
+
+
+   </script>
+</html>
