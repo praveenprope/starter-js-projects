@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Responsive Word Counter</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    body {
+      font-family: 'Arial', sans-serif;
+      background: linear-gradient(135deg, #6a11cb, #2575fc);
+      color: #fff;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+    .word-counter {
+      background: rgba(0, 0, 0, 0.6);
+      padding: 30px;
+      border-radius: 15px;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+      text-align: center;
+      width: 90%;
+      max-width: 500px;
+    }
+    .word-counter h1 {
+      font-size: 2rem;
+      margin-bottom: 20px;
+    }
+    .word-counter textarea {
+      width: 100%;
+      height: 150px;
+      padding: 10px;
+      margin: 10px 0;
+      font-size: 1rem;
+      border: none;
+      border-radius: 8px;
+      resize: none;
+    }
+    .word-counter button {
+      background: #4caf50;
+      color: #fff;
+      font-size: 1.2rem;
+      border: none;
+      padding: 10px 20px;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: background 0.3s ease;
+    }
+    .word-counter button:hover {
+      background: #45a049;
+    }
+    .result {
+      margin-top: 20px;
+      font-size: 1.5rem;
+    }
+    @media (max-width: 600px) {
+      .word-counter {
+        padding: 20px;
+      }
+      .word-counter h1 {
+        font-size: 1.8rem;
+      }
+      .word-counter button {
+        font-size: 1rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="word-counter">
+    <h1>Word Counter</h1>
+    <textarea id="text" placeholder="Type or paste your text here..."></textarea>
+    <button onclick="countWords()">Count Words</button>
+    <div class="result" id="result"></div>
+  </div>
+
+  <script>
+    function countWords() {
+      const text = document.getElementById('text').value.trim();
+      const result = document.getElementById('result');
+
+      if (text === "") {
+        result.innerHTML = '✍️ Please enter some text!';
+        result.style.color = 'red';
+        return;
+      }
+
+      const wordArray = text.split(/\s+/).filter(word => word.length > 0);
+      const wordCount = wordArray.length;
+
+      result.style.color = '#fff';
+      result.innerHTML = `📖 Total Words: <strong>${wordCount}</strong>`;
+    }
+  </script>
+</body>
+</html>
