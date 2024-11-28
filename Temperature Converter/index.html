@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Temperature Converter 🎤🌍</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: Arial, sans-serif;
+    }
+    body {
+      background: linear-gradient(to bottom, #ff9a9e, #fad0c4);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+    .converter-container {
+      background: #fff;
+      border-radius: 12px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+      text-align: center;
+      padding: 20px;
+      max-width: 400px;
+      width: 90%;
+    }
+    h1 {
+      font-size: 2rem;
+      color: #333;
+      margin-bottom: 10px;
+    }
+    h1 span {
+      font-size: 2.5rem;
+      color: #ff6347;
+    }
+    p {
+      margin-bottom: 20px;
+      font-size: 1rem;
+      color: #666;
+    }
+    .input-group {
+      margin: 15px 0;
+    }
+    label {
+      display: block;
+      font-weight: bold;
+      color: #444;
+      margin-bottom: 8px;
+    }
+    input {
+      width: 90%;
+      padding: 10px;
+      margin: 5px auto;
+      border: 2px solid #ddd;
+      border-radius: 8px;
+      font-size: 1rem;
+      outline: none;
+      text-align: center;
+    }
+    input:focus {
+      border-color: #ff6347;
+    }
+    button {
+      background: #ff6347;
+      color: #fff;
+      border: none;
+      border-radius: 8px;
+      padding: 10px 20px;
+      font-size: 1rem;
+      cursor: pointer;
+      margin-top: 15px;
+      transition: background 0.3s ease;
+    }
+    button:hover {
+      background: #e55335;
+    }
+    .emoji {
+      font-size: 3rem;
+      margin: 15px 0;
+      animation: bounce 1.5s infinite;
+    }
+    @keyframes bounce {
+      0%, 100% {
+        transform: translateY(0);
+      }
+      50% {
+        transform: translateY(-10px);
+      }
+    }
+    footer {
+      margin-top: 15px;
+      font-size: 0.9rem;
+      color: #444;
+    }
+  </style>
+</head>
+<body>
+  <div class="converter-container">
+    <h1>Temperature Converter <span>🎤🌍</span></h1>
+    <p>Convert °C to °F and back. Let the temperature sing! 🎶</p>
+    <div class="input-group">
+      <label for="celsius">Celsius (°C):</label>
+      <input type="number" id="celsius" placeholder="Enter Celsius">
+    </div>
+    <div class="emoji">🎵 🎤 🌡️ 🌞</div>
+    <div class="input-group">
+      <label for="fahrenheit">Fahrenheit (°F):</label>
+      <input type="number" id="fahrenheit" placeholder="Enter Fahrenheit">
+    </div>
+    <button class="button">Convert Temperature</button>
+    <footer>World-Class Temperature Conversion 🔥</footer>
+  </div>
+  <script>
+    const celsiusInput = document.querySelector('#celsius');
+    const fahrenheitInput = document.querySelector('#fahrenheit');
+    const convertButton = document.querySelector('.button');
+
+    convertButton.addEventListener('click', () => {
+      const celsius = parseFloat(celsiusInput.value);
+      const fahrenheit = parseFloat(fahrenheitInput.value);
+
+      if (!isNaN(celsius) && !isNaN(fahrenheit)) {
+        alert("Please clear one field to convert.");
+        return;
+      }
+
+      if (!isNaN(celsius)) {
+        // Convert Celsius to Fahrenheit
+        fahrenheitInput.value = (celsius * (9 / 5) + 32).toFixed(2);
+      } else if (!isNaN(fahrenheit)) {
+        // Convert Fahrenheit to Celsius
+        celsiusInput.value = ((fahrenheit - 32) * (5 / 9)).toFixed(2);
+      } else {
+        alert("Please enter a value in one of the fields.");
+      }
+    });
+  </script>
+</body>
+</html>
