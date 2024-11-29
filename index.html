@@ -5,8 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>JavaScript Projects</title>
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&family=Poppins:wght@300;600&display=swap"
-        rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&family=Poppins:wght@300;600&display=swap" rel="stylesheet">
     <style>
         * {
             box-sizing: border-box;
@@ -23,8 +22,6 @@
             margin: 0;
         }
 
-
-
         h1 {
             font-size: 3.5rem;
             text-align: center;
@@ -35,7 +32,6 @@
             text-shadow: 2px 2px 6px rgba(0, 0, 0, 0.3);
         }
 
-
         h3 {
             font-size: 2rem;
             text-align: center;
@@ -45,7 +41,6 @@
             letter-spacing: 2px;
             text-shadow: 2px 2px 6px rgba(0, 0, 0, 0.3);
         }
-
 
         .grid-container {
             display: grid;
@@ -60,7 +55,6 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            /* border-radius: 12px; */
             color: white;
             text-align: center;
             font-size: 1.3rem;
@@ -71,8 +65,6 @@
             overflow: hidden;
             background-color: #3498db;
             padding: 20px;
-
-
         }
 
         .card a {
@@ -111,7 +103,6 @@
 
             .grid-container {
                 grid-template-columns: repeat(3, 1fr);
-                /* Fixed 3 columns in mobile view */
                 gap: 10px;
             }
 
@@ -125,42 +116,40 @@
 <body>
 
     <h1>JavaScript Projects</h1>
-    <h3 id="totalP" ></h3>
+    <h3 id="totalP"></h3>
 
-    <div class="grid-container" id="grid-container">
-        <div class="card"><a href="backgroundColorChanger/index.html">🎨 Background Changer</a></div>
-        <div class="card"><a href="bmiCalculator/index.html">🏋️‍♂️ BMI Calculator</a></div>
-        <div class="card"><a href="DigitalClock/index.html">⌚ Digital Clock</a></div>
-        <div class="card"><a href="guessNumberGame/index.html">🎲 Guess the Number</a></div>
-        <div class="card"><a href="Interactive WWE Superstar Gallery/index.html">🔥 WWE Gallery</a></div>
-        <div class="card"><a href="automaticColorChanger/index.html">🌈 Auto Color Changer</a></div>
-        <div class="card"><a href="Billing System/index.html">🧾 Bill Generator</a></div>
-        <div class="card"><a href="GuessNumber/index.html">🎲 Guess Number 2</a></div>
-        <div class="card"><a href="https://praveenprope.github.io/Mood-Play/">🎵 Mood Player</a></div>
-        <div class="card"><a href="counter/index.html">🔢 Counter</a></div>
-        <div class="card"><a href="toDoList/index.html">✅ To-Do List</a></div>
-        <div class="card"><a href="Image Slider/index.html">🖼️▶️ Image Slider</a></div>
-        <div class="card"><a href="palindrome checker/index.html">🔄🔍 Palindrome Checker</a></div>
-        <div class="card"><a href="Random Quote Generator/index.html">✨📖Random Quote Generator</a></div>
-        <div class="card"><a href="Dice Gaming/index.html">✨ Dice Game </a></div>
-        <div class="card"><a href="Form Validation/index.html">📝 Form Validation </a></div>
-        <div class="card"><a href="Temperature Converter/index.html">✨ Temperature Converter </a></div>
-        <div class="card"><a href="Age Calculator/index.html">🎂 Age Calculator </a></div>
-        <div class="card"><a href="word Counter/index.html">✍️ Word Counter </a></div> 
-        <div class="card"><a href="Tip Calculator/index.html">✍️ Tip Calculator </a></div> 
-    
-    
-    
-    </div>
+    <div class="grid-container" id="grid-container"></div>
 
     <script>
-       
-     const totalP = document.getElementById('totalP');
-     const gridContainer = document.querySelector('.grid-container');
-     const gridSize = gridContainer.children;
-     totalP.textContent = `Total: = ${gridSize.length}`
+        // Array of projects
+        const projects = [
+            { "name": "🎨 Background Changer", "filePath": "backgroundColorChanger/index.html" },
+            { "name": "🏋️‍♂️ BMI Calculator", "filePath": "bmiCalculator/index.html" },
+            { "name": "⌚ Digital Clock", "filePath": "DigitalClock/index.html" },
+            { "name": "🎲 Guess the Number", "filePath": "guessNumberGame/index.html" },
+            { "name": "🔥 WWE Gallery", "filePath": "Interactive WWE Superstar Gallery/index.html" },
+            { "name": "🌈 Auto Color Changer", "filePath": "automaticColorChanger/index.html" },
+            { "name": "🧾 Bill Generator", "filePath": "Billing System/index.html" },
+            { "name": "🎲 Guess Number 2", "filePath": "GuessNumber/index.html" },
+            { "name": "🎵 Mood Player", "filePath": "https://praveenprope.github.io/Mood-Play/" },
+            { "name": "🔢 Counter", "filePath": "counter/index.html" },
+            { "name": "✅ To-Do List", "filePath": "toDoList/index.html" },
+            { "name": "🖼️▶️ Image Slider", "filePath": "Image Slider/index.html" },
+            { "name": "🔄🔍 Palindrome Checker", "filePath": "palindrome checker/index.html" },
+            { "name": "✨📖 Random Quote Generator", "filePath": "Random Quote Generator/index.html" },
+            { "name": "✨ Dice Game", "filePath": "Dice Gaming/index.html" },
+            { "name": "📝 Form Validation", "filePath": "Form Validation/index.html" },
+            { "name": "✨ Temperature Converter", "filePath": "Temperature Converter/index.html" },
+            { "name": "🎂 Age Calculator", "filePath": "Age Calculator/index.html" },
+            { "name": "✍️ Word Counter", "filePath": "word Counter/index.html" },
+            { "name": "✍️ Tip Calculator", "filePath": "Tip Calculator/index.html" }
+        ];
 
+        // Get the grid container and total projects element
+        const gridContainer = document.getElementById('grid-container');
+        const totalP = document.getElementById('totalP');
 
+        // Function to generate a random hex color
         function getRandomColor() {
             const letters = '0123456789ABCDEF';
             let color = '#';
@@ -170,9 +159,21 @@
             return color;
         }
 
-        document.body.style.backgroundColor = getRandomColor();
+        document.body.style.backgroundColor = getRandomColor()
 
-        // Randomly assign box sizes and add flip animation
+        // Create project cards dynamically
+        projects.forEach(project => {
+            const card = document.createElement('div');
+            card.classList.add('card');
+            card.innerHTML = `<a href="${project.filePath}" target="_blank">${project.name}</a>`;
+            card.style.backgroundColor = getRandomColor();
+            gridContainer.appendChild(card);
+        });
+
+        // Update the total number of projects
+        totalP.textContent = `Total: ${projects.length}`;
+
+        // Randomly assign flip animation to a few cards and adjust grid size
         const cards = document.querySelectorAll('.card');
         const randomIndices = [];
         while (randomIndices.length < 3) {
@@ -188,13 +189,10 @@
             card.style.gridColumn = randomSize;
             card.style.gridRow = randomSize;
 
-            // Add flip animation to 3 random cards
+            // Add flip animation to some random cards
             if (randomIndices.includes(index)) {
                 card.classList.add('flip');
             }
-
-            // Random background color for cards
-            card.style.backgroundColor = getRandomColor();
         });
     </script>
 
