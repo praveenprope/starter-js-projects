@@ -16,55 +16,107 @@
 
         body {
             font-family: 'Poppins', sans-serif;
-            background-color: black;
-            color: white;
+            background-color: #141414;
+            color: #fff;
             padding: 20px;
             margin: 0;
         }
 
-        h1 {
-            font-size: 3.5rem;
-            text-align: center;
-            color: white;
-            margin-bottom: 20px;
-            font-weight: 700;
-            letter-spacing: 2px;
-            text-shadow: 2px 2px 6px rgba(0, 0, 0, 0.3);
+        /* Header Styling */
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 25px;
+            background-color: #222;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            border-radius: 10px;
         }
 
-        h3 {
+        header .logo {
             font-size: 2rem;
+            font-weight: 700;
+            color: #fff;
+            letter-spacing: 1px;
+        }
+
+        #totalP {
+            font-size: 1.1rem;
+            font-weight: 500;
+            color: #bbb;
+        }
+
+        .hamburger {
+            display: none;
+            font-size: 2rem;
+            cursor: pointer;
+            color: #fff;
+            transition: transform 0.3s ease;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 20px;
+        }
+
+        .nav-links a {
+            color: #fff;
+            font-weight: 600;
+            text-transform: uppercase;
+            transition: color 0.3s ease;
+        }
+
+        .nav-links a:hover {
+            color: #3498db;
+        }
+
+        /* Grid Container Styling */
+        h1 {
+            font-size: 3.5rem;
             text-align: center;
             color: white;
             margin-bottom: 30px;
             font-weight: 700;
             letter-spacing: 2px;
-            text-shadow: 2px 2px 6px rgba(0, 0, 0, 0.3);
+            text-shadow: 3px 3px 5px rgba(0, 0, 0, 0.5);
+        }
+
+        h3 {
+            font-size: 1.6rem;
+            text-align: center;
+            color: white;
+            margin-bottom: 30px;
+            font-weight: 600;
         }
 
         .grid-container {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-            gap: 10px;
-            grid-auto-flow: dense;
+            grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+            gap: 20px;
             max-width: 1200px;
             margin: 0 auto;
         }
 
         .card {
             display: flex;
-            align-items: center;
+            flex-direction: column;
             justify-content: center;
-            color: white;
+            align-items: center;
+            color: #fff;
             text-align: center;
-            font-size: 1.3rem;
+            font-size: 1rem;
             font-weight: 600;
             cursor: pointer;
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            transition: transform 0.3s ease, box-shadow 0.3s ease, background-color 0.3s ease;
             position: relative;
             overflow: hidden;
             background-color: #3498db;
-            padding: 20px;
+            padding: 25px;
+            border-radius: 12px;
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
         }
 
         .card a {
@@ -72,8 +124,9 @@
         }
 
         .card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2);
+            transform: translateY(-10px);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+            background-color: #2980b9;
         }
 
         /* Flip Animation */
@@ -97,17 +150,58 @@
 
         /* Responsive Adjustments */
         @media (max-width: 768px) {
-            h1 {
-                font-size: 2.5rem;
+            header {
+                display: flex;
+                justify-content: space-between;
+            }
+
+            .hamburger {
+                display: block;
+            }
+
+            .nav-links {
+                display: none;
+                flex-direction: column;
+                gap: 15px;
+                background-color: #222;
+                position: absolute;
+                top: 70px;
+                right: 0;
+                padding: 15px 0;
+                border-radius: 10px;
+                width: 250px;
+            }
+
+            .nav-links.active {
+                display: flex;
             }
 
             .grid-container {
                 grid-template-columns: repeat(4, 1fr);
-                gap: 10px;
+                gap: 15px;
             }
 
             .card {
                 font-size: 0.8rem;
+                padding: 20px;
+            }
+
+            h1 {
+                font-size: 2.5rem;
+            }
+
+            #totalP {
+                font-size: 1rem;
+            }
+        }
+
+        @media (min-width: 769px) {
+            header {
+                display: block;
+            }
+
+            .hamburger {
+                display: none;
             }
         }
     </style>
@@ -115,7 +209,16 @@
 
 <body>
 
-    <h1>JavaScript Projects</h1>
+    <header>
+        <div class="logo">JS Projects</div>
+        <div id="totalP"></div>
+        <div class="hamburger" id="hamburger">&#9776;</div>
+        <nav class="nav-links" id="navLinks">
+            <a href="#about">About</a>
+            <a href="#contact">Contact</a>
+        </nav>
+    </header>
+
     <h3 id="totalP"></h3>
 
     <div class="grid-container" id="grid-container"></div>
@@ -143,7 +246,7 @@
             { "name": "🎂 Age Calculator", "filePath": "Age Calculator/index.html" },
             { "name": "✍️ Word Counter", "filePath": "word Counter/index.html" },
             { "name": "✍️ Tip Calculator", "filePath": "Tip Calculator/index.html" },
-            {"name": "Background Image Changer", "filePath": "BackgroundImageChanger/index.html" }
+            { "name": "Background Image Changer", "filePath": "BackgroundImageChanger/index.html" }
         ];
 
         // Get the grid container and total projects element
@@ -194,6 +297,14 @@
             if (randomIndices.includes(index)) {
                 card.classList.add('flip');
             }
+        });
+
+        // Hamburger Menu Toggle
+        const hamburger = document.getElementById('hamburger');
+        const navLinks = document.getElementById('navLinks');
+
+        hamburger.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
         });
     </script>
 
