@@ -37,7 +37,7 @@
         }
 
         header .logo {
-            font-size: 2rem;
+            font-size: 1rem;
             font-weight: 700;
             color: #fff;
             letter-spacing: 1px;
@@ -223,7 +223,9 @@
 
     <h3 id="totalP"></h3>
 
-    <div class="grid-container" id="grid-container"></div>
+    <div class="grid-container" id="grid-container">
+        <div id="darkMode" class="card">Dark Mode</div>
+    </div>
 
     <script>
         // Array of projects
@@ -257,15 +259,27 @@
 
         // Function to generate a random hex color
         function getRandomColor() {
-            const letters = '0123456789ABCDEF';
-            let color = '#';
-            for (let i = 0; i < 6; i++) {
-                color += letters[Math.floor(Math.random() * 16)];
-            }
-            return color;
-        }
+    const letters = '0123456789ABCDEF';
+    let color = '#';
+    for (let i = 0; i < 6; i++) {
+        color += letters[Math.floor(Math.random() * 16)];
+    }
+    return color;
+}
 
-        document.body.style.backgroundColor = getRandomColor()
+document.body.style.backgroundColor = getRandomColor();
+
+const darkButton = document.getElementById('darkMode');
+let darkValue = false;
+
+darkButton.addEventListener('click', () => {
+    darkValue = !darkValue; // Toggle the darkValue between true and false
+    if (darkValue) {
+        document.body.style.backgroundColor = "black";
+    } else {
+        document.body.style.backgroundColor = getRandomColor();
+    }
+});
 
         // Create project cards dynamically
         projects.forEach(project => {
