@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Background Image Changer</title>
+  <style>
+    body, html {
+      margin: 0;
+      padding: 0;
+      width: 100%;
+      height: 100%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-family: Arial, sans-serif;
+      background-image: url('https://via.placeholder.com/1920x1080/87CEFA/FFFFFF?text=Default+Background');
+      background-size: cover;
+      background-position: center;
+      transition: background-image 0.5s ease-in-out;
+    }
+
+    .button-container {
+      position: absolute;
+      bottom: 20px;
+      display: flex;
+      gap: 10px;
+    }
+
+    button {
+      padding: 10px 20px;
+      background-color: #000;
+      color: #fff;
+      border: none;
+      border-radius: 25px;
+      cursor: pointer;
+      text-transform: uppercase;
+      font-weight: bold;
+      letter-spacing: 1px;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      transition: background-color 0.3s, transform 0.3s;
+    }
+
+    button:hover {
+      background-color: #444;
+      transform: scale(1.1);
+    }
+
+    button:active {
+      transform: scale(1);
+    }
+  </style>
+</head>
+<body>
+  <div class="button-container">
+    <button id="bgChanger">Change Background</button>
+    <a id="downloadButton" href="#" download="background.jpg">
+      <button>Download Image</button>
+    </a>
+  </div>
+
+  <script>
+    const imageChangeButton = document.querySelector('#bgChanger');
+    const downloadButton = document.querySelector('#downloadButton');
+    const manyImages = {
+      1: 'https://images.unsplash.com/photo-1491466424936-e304919aada7?q=80&w=1469&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
+      2: 'https://media.istockphoto.com/id/1248619427/photo/retro-futuristic-city-flythrough-background-80s-sci-fi-landscape-in-space.jpg?s=1024x1024&w=is&k=20&c=Ll0Gztf7Q5cRRiRS-hBw3LvHZ-Ijxn2vQpIl7K9vonI=',
+      3: 'https://img.freepik.com/free-photo/morskie-oko-tatry_1204-510.jpg?t=st=1733151523~exp=1733155123~hmac=abf11f872e99b7c6cdd84612cf6e71c10e6e48d3d7b638dcbe5ad27820630a72&w=740',
+      4: 'https://img.freepik.com/premium-vector/night-landscape-background_126980-47.jpg?w=826',
+      5: 'https://img.freepik.com/free-photo/nighttime-nature-landscape-galaxy-mountain-water-star-beauty-generative-ai_188544-9736.jpg?t=st=1733152320~exp=1733155920~hmac=3d1e31c15cce34d7854ee22407bbe70ade2fbd15efa4a71551fc2f161f1a37e5&w=826',
+      6: 'https://img.freepik.com/free-vector/palm-trees-gradient-background_1048-10552.jpg?t=st=1733152544~exp=1733156144~hmac=b26f9bbbf3efb08a466ffeb01f0d994d12c2247dccf347dff6faa784fdb9af4b&w=360',
+      7: 'https://img.freepik.com/premium-photo/scenic-view-sea-against-sky_1048944-14960160.jpg?w=360',
+      8: 'https://img.freepik.com/free-photo/vertical-famous-rural-de-anaga-park-las-spain-scenic-nature-park_181624-6510.jpg?t=st=1733152657~exp=1733156257~hmac=c3c8f41f7b2c2dc7953b855ac76197352df1d94b89fabd5e52dae07eca7bd5cf&w=360',
+      9: 'https://img.freepik.com/premium-photo/scenic-view-sea-against-clear-sky_1048944-15177090.jpg?w=360',
+      10: 'https://img.freepik.com/premium-photo/red-dot-middle-desert_968246-254.jpg?w=360',
+    };
+    let count = 0;
+
+    imageChangeButton.addEventListener('click', () => {
+      count++;
+      if (count > 10) {
+        count = 1;
+      }
+      document.body.style.backgroundImage = `url(${manyImages[count]})`;
+
+   
+      downloadButton.href = manyImages[count];
+    });
+  </script>
+</body>
+</html>
