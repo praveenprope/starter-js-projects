@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Animated Text</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #282c34;
+            color: #61dafb;
+            font-size: 2rem;
+        }
+
+        #text-container {
+            white-space: nowrap;
+            font-size: 6vw;
+            overflow: hidden;
+            border-right: 2px solid #61dafb;
+            animation: blink 0.7s step-end infinite;
+        }
+
+        @keyframes blink {
+            50% {
+                border-color: transparent;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div id="text-container"></div>
+    <script>
+
+        const textContainer = document.getElementById('text-container');
+        const animateText = "This is an animated text effect!";
+        let index = 0;
+        let text = "";
+
+        const textAnimationHandler = () => {
+            if(index < animateText.length){
+                text = text + animateText[index];
+               textContainer.textContent = text;
+               index++;
+            } else{
+                clearInterval(clear)
+            }
+        }
+
+    const clear =  setInterval(() => {
+        textAnimationHandler()
+     }, 100);
+
+
+    </script>
+</body>
+
+</html>

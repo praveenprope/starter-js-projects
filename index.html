@@ -5,13 +5,15 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>JavaScript Projects</title>
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&family=Poppins:wght@300;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&family=Poppins:wght@300;600&display=swap"
+        rel="stylesheet">
     <style>
         * {
             box-sizing: border-box;
             margin: 0;
             padding: 0;
             text-decoration: none;
+            user-select: none;
         }
 
         body {
@@ -180,7 +182,7 @@
             .grid-container {
                 grid-template-columns: repeat(4, 1fr);
                 gap: 15px;
-                
+
             }
 
             .card {
@@ -250,7 +252,8 @@
             { "name": "🎂 Age Calculator", "filePath": "Age Calculator/index.html" },
             { "name": "✍️ Word Counter", "filePath": "word Counter/index.html" },
             { "name": "✍️ Tip Calculator", "filePath": "Tip Calculator/index.html" },
-            { "name": "Background Image Changer", "filePath": "BackgroundImageChanger/index.html" }
+            { "name": "Background Image Changer", "filePath": "BackgroundImageChanger/index.html" },
+            {"name": "Animate Text", "filePath": "Aniamate Text/index.html"}
         ];
 
         // Get the grid container and total projects element
@@ -259,27 +262,27 @@
 
         // Function to generate a random hex color
         function getRandomColor() {
-    const letters = '0123456789ABCDEF';
-    let color = '#';
-    for (let i = 0; i < 6; i++) {
-        color += letters[Math.floor(Math.random() * 16)];
-    }
-    return color;
-}
+            const letters = '0123456789ABCDEF';
+            let color = '#';
+            for (let i = 0; i < 6; i++) {
+                color += letters[Math.floor(Math.random() * 16)];
+            }
+            return color;
+        }
 
-document.body.style.backgroundColor = getRandomColor();
-
-const darkButton = document.getElementById('darkMode');
-let darkValue = false;
-
-darkButton.addEventListener('click', () => {
-    darkValue = !darkValue; // Toggle the darkValue between true and false
-    if (darkValue) {
-        document.body.style.backgroundColor = "black";
-    } else {
         document.body.style.backgroundColor = getRandomColor();
-    }
-});
+
+        const darkButton = document.getElementById('darkMode');
+        let darkValue = false;
+
+        darkButton.addEventListener('click', () => {
+            darkValue = !darkValue; // Toggle the darkValue between true and false
+            if (darkValue) {
+                document.body.style.backgroundColor = "black";
+            } else {
+                document.body.style.backgroundColor = getRandomColor();
+            }
+        });
 
         // Create project cards dynamically
         projects.forEach(project => {
@@ -291,7 +294,7 @@ darkButton.addEventListener('click', () => {
         });
 
         // Update the total number of projects
-        totalP.textContent = `Total: ${projects.length+1}`;
+        totalP.textContent = `Total: ${projects.length + 1}`;
 
         // Randomly assign flip animation to a few cards and adjust grid size
         const cards = document.querySelectorAll('.card');
@@ -324,7 +327,7 @@ darkButton.addEventListener('click', () => {
         });
 
 
-        
+
     </script>
 
 </body>
