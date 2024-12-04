@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Countdown Timer</title>
+  <style>
+    body {
+      font-family: 'Arial', sans-serif;
+      margin: 0;
+      padding: 0;
+      background: linear-gradient(to right, #141e30, #243b55);
+      color: #fff;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      text-align: center;
+      overflow: hidden;
+    }
+
+    h1 {
+      font-size: 2.5rem;
+      margin-bottom: 20px;
+    }
+
+    .countdown {
+      display: flex;
+      justify-content: center;
+      gap: 15px;
+      margin: 20px 0;
+    }
+
+    .time-box {
+      background: rgba(255, 255, 255, 0.1);
+      border-radius: 10px;
+      padding: 15px 20px;
+      text-align: center;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    }
+
+    .time-box span {
+      display: block;
+      font-size: 2rem;
+      font-weight: bold;
+    }
+
+    .time-box small {
+      font-size: 0.8rem;
+      text-transform: uppercase;
+    }
+
+    .set-timer {
+      margin-top: 20px;
+    }
+
+    .set-timer input,
+    .set-timer button {
+      padding: 10px 15px;
+      margin: 5px;
+      font-size: 1rem;
+      border-radius: 5px;
+      border: none;
+      outline: none;
+    }
+
+    .set-timer input {
+      width: 200px;
+    }
+
+    .set-timer button {
+      background: #4caf50;
+      color: #fff;
+      cursor: pointer;
+      transition: background 0.3s ease;
+    }
+
+    .set-timer button:hover {
+      background: #45a049;
+    }
+
+    @media (max-width: 768px) {
+      h1 {
+        font-size: 2rem;
+      }
+
+      .countdown {
+        flex-direction: column;
+        gap: 10px;
+      }
+
+      .time-box {
+        width: 100px;
+        padding: 10px;
+      }
+
+      .set-timer input {
+        width: 100%;
+      }
+    }
+  </style>
+</head>
+<body>
+  <h1>Countdown to Your Event</h1>
+
+  <div id="countdown" class="countdown">
+    <div class="time-box">
+      <span id="days">00</span>
+      <small>Days</small>
+    </div>
+    <div class="time-box">
+      <span id="hours">00</span>
+      <small>Hours</small>
+    </div>
+    <div class="time-box">
+      <span id="minutes">00</span>
+      <small>Minutes</small>
+    </div>
+    <div class="time-box">
+      <span id="seconds">00</span>
+      <small>Seconds</small>
+    </div>
+  </div>
+
+  <div class="set-timer">
+    <input type="datetime-local" id="event-time" />
+    <button id="set-timer-btn">Set Timer</button>
+  </div>
+
+  <script>
+    const daysEl = document.getElementById('days');
+    const hoursEl = document.getElementById('hours');
+    const minutesEl = document.getElementById('minutes');
+    const secondsEl = document.getElementById('seconds');
+    const eventTimeInput = document.getElementById('event-time');
+    const setTimerBtn = document.getElementById('set-timer-btn');
+
+    let countdownInterval;
+    const localStorageKey = 'countdownEventTime';
+
+    // Initialize countdown
+    function initializeCountdown() {
+      const savedTime = localStorage.getItem(localStorageKey);
+      if (savedTime) {
+        startCountdown(new Date(savedTime));
+      }
+    }
+
+    // Start countdown
+    function startCountdown(eventTime) {
+      clearInterval(countdownInterval); // Clear previous interval
+
+      localStorage.setItem(localStorageKey, eventTime); // Save to localStorage
+
+      countdownInterval = setInterval(() => {
+        const currentTime = new Date().getTime();
+        const timeDifference = new Date(eventTime).getTime() - currentTime;
+
+        if (timeDifference <= 0) {
+          clearInterval(countdownInterval);
+          alert('The countdown is over!');
+          localStorage.removeItem(localStorageKey);
+          updateCountdownDisplay(0, 0, 0, 0);
+          return;
+        }
+
+        const days = Math.floor(timeDifference / (1000 * 60 * 60 * 24));
+        const hours = Math.floor((timeDifference / (1000 * 60 * 60)) % 24);
+        const minutes = Math.floor((timeDifference / (1000 * 60)) % 60);
+        const seconds = Math.floor((timeDifference / 1000) % 60);
+
+        updateCountdownDisplay(days, hours, minutes, seconds);
+      }, 1000);
+    }
+
+    // Update countdown display
+    function updateCountdownDisplay(days, hours, minutes, seconds) {
+      daysEl.textContent = String(days).padStart(2, '0');
+      hoursEl.textContent = String(hours).padStart(2, '0');
+      minutesEl.textContent = String(minutes).padStart(2, '0');
+      secondsEl.textContent = String(seconds).padStart(2, '0');
+    }
+
+    // Event listener for setting timer
+    setTimerBtn.addEventListener('click', () => {
+      const eventTime = eventTimeInput.value;
+      if (eventTime) {
+        startCountdown(eventTime);
+      } else {
+        alert('Please select a valid date and time!');
+      }
+    });
+
+    // Initialize on page load
+    initializeCountdown();
+  </script>
+</body>
+</html>
