@@ -124,6 +124,11 @@
 
         .card a {
             color: white;
+            width: 100%;
+            height: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
         }
 
         .card:hover {
@@ -214,7 +219,7 @@
 <body>
 
     <header>
-        <div class="logo">JS Projects</div>
+        <div class="logo">JS Projects <Span style="color: red;" >Easy</Span></div>
         <div id="totalP"></div>
         <div class="hamburger" id="hamburger">&#9776;</div>
         <nav class="nav-links" id="navLinks">
@@ -227,6 +232,16 @@
 
     <div class="grid-container" id="grid-container">
         <div id="darkMode" class="card">🌙 Dark Mode</div>
+        <div id="midProject" class="card">
+             <a href="Mid/mid.html">😌 Mid Project</a>
+          </div>
+          <div id="hardProject" class="card">
+            <a href="Hard/hard.html">🔥 Hard Project</a>
+          </div>
+          
+        
+        
+        
     </div>
 
     <script>
